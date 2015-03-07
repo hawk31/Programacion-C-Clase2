@@ -1,4 +1,5 @@
 #include "coche.h"
+/*ij */
 
 int main(void)
 {
