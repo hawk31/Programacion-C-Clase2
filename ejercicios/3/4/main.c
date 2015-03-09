@@ -5,6 +5,10 @@ int main(void)
 	struct coche *c1;
 	char info[250];
 
+	/*No reservar espacio en memoria */
+
+	c1 = curso_coche_alloc();
+
 	curso_coche_attr_set_str(c1, CURSO_COCHE_ATTR_MATRICULA, "DF 67838 SE");
 	curso_coche_attr_set_str(c1, CURSO_COCHE_ATTR_MARCA, "mini");
 	curso_coche_attr_set_u32(c1, CURSO_COCHE_ATTR_ID, 0);

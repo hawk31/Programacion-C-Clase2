@@ -31,7 +31,7 @@ int main(void)
 
 	curso_concesionario_attr_unset_coche(con, 0);
 
-	curso_concesionario_snprintf(info, sizeof(info), con);
+	curso_concesionario_snprintf(info, sizeof(info), con); /* Al hacer el unset el orden se pierde, memory leak*/
 	printf("%s", info);
 
 	curso_concesionario_free(con);
