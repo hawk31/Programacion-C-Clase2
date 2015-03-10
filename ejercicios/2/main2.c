@@ -70,11 +70,40 @@ int main(void){
 
 	curso_gestor_tareas_snprintf(buffer, sizeof(buffer), gtordenado);
 	printf("%s\n", buffer);
+	printf("---------- Apartado 4 -----\n");
 
 
 	/*curso_gestor_tareas_free(gt); Aqui mete segmentation fault*/
-	curso_gestor_tareas_free(gtordenado);
+	/*curso_gestor_tareas_free(gtordenado);*/
+
+	/* Reordenando tareas tras un unset */
 
 
+
+	struct gestor_tareas *gtreordenado;
+	uint32_t pos_elim = 1;
+	curso_gestor_tareas_attr_unset_tarea(gt,1);
+	i=0;
+	char buffer2[5000];
+
+	gtreordenado = curso_gestor_tareas_alloc();
+
+
+	for(i=0 ; i<=pos_elim ; i++){
+		if(i==pos_elim) break;
+		curso_gestor_tareas_set_tarea(gtreordenado, CURSO_GESTOR_TAREAS_ATTR_TAREA,
+			curso_gestor_tareas_attr_get_tarea(gt, CURSO_GESTOR_TAREAS_ATTR_TAREA, i));
+	}
+
+	if(pos_elim != 2){
+		for(i=(pos_elim)+1;i<3;i++){
+			curso_gestor_tareas_set_tarea(gtreordenado, CURSO_GESTOR_TAREAS_ATTR_TAREA,
+				curso_gestor_tareas_attr_get_tarea(gt, CURSO_GESTOR_TAREAS_ATTR_TAREA, i));
+		}
+
+	}
+
+	curso_gestor_tareas_snprintf(buffer2, sizeof(buffer2), gtreordenado);
+	printf("%s\n", buffer2);
 	return 0;
 }
